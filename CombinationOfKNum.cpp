@@ -1,12 +1,12 @@
-vector<vector<int> > curbine(int n, int k) 
+vector<vector<int> > combine(int n, int k) 
 {
     vector<vector<int> > res;
     vector<int> cur;
-    curbineRe(n, k, 1, cur, res);
+    combineHelper(n, k, 1, cur, res);
     return res;
 }
  
-void curbineRe(int n, int k, int start, vector<int> &cur, vector<vector<int> > &res)
+void combineHelper(int n, int k, int start, vector<int> &cur, vector<vector<int> > &res)
 {
     int m = cur.size();
     if (m == k) {
@@ -15,7 +15,7 @@ void curbineRe(int n, int k, int start, vector<int> &cur, vector<vector<int> > &
     }
     for (int i = start; i <= n-(k-m)+1; ++i) {
         cur.push_back(i);
-        curbineRe(n, k, i+1, cur, res);
+        combineHelper(n, k, i+1, cur, res);
         cur.pop_back();
     }
 }
